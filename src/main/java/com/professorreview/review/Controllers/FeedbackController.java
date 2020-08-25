@@ -51,8 +51,7 @@ public class FeedbackController {
     }
     @GetMapping("/returnAmountOfProfessors")
     public ResponseEntity AmountOfProfessors(){
-        List<Professor> listOfProfessors = professorService.list();
-        int size = listOfProfessors.size();
+        int size = professorService.list().size();
         return new ResponseEntity("The number of professors is: "+size, HttpStatus.OK);
     }
 
