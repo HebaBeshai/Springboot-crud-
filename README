@@ -1,1 +1,4 @@
-
+Springboot rest crud application.
+Uses JPA and H2 Database.
+Maven.
+SQL/OQL.
