@@ -18,5 +18,6 @@ public class ProfessorDAO extends AbstractDAO<Professor> {
     protected Professor getById(Long entityId) {
         return entityManager.find(Professor.class, entityId);
     }
+
 }
 
