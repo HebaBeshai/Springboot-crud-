@@ -1,4 +1,4 @@
 Springboot rest crud application.
-Uses JPA and H2 Database.
+Uses JPA and H2 Database (in memory database used for development only).
 Maven.
 SQL/OQL.
