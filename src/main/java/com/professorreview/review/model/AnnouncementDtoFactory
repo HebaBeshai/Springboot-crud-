@@ -1,0 +1,42 @@
+
+public class AnnouncementDtoFactory {
+
+    private Announcement entity;
+
+    private AnnouncementDtoFactory() {
+    }
+
+    public static AnnouncementDtoFactory factory() {
+        return new AnnouncementDtoFactory();
+    }
+
+    public AnnouncementDtoFactory setEntity(Announcement entity) {
+        this.entity = entity;
+        return this;
+    }
+
+    public AnnouncementDto build(Announcement entity) {
+        AnnouncementDto dto = new AnnouncementDto();
+
+        dto.setId(entity.getId());
+        dto.setText(entity.getText());
+
+        return dto;
+    }
+
+    public Announcement create(AnnouncementDto dto) {
+        this.entity = new Announcement();
+        return update(dto);
+    }
+
+
+    public Announcement update(AnnouncementDto dto) {
+        if (entity == null) throw new IllegalArgumentException("An Announcement entity must be set on factory");
+
+        entity.setText(dto.getText());
+
+        return entity;
+    }
+
+
+}
