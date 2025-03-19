@@ -1,0 +1,54 @@
+
+
+
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.util.Comparator.naturalOrder;
+
+@Service
+public class AnnouncementService {
+
+
+    public List<AnnouncementDto> getAllAnnouncements() {
+        List<AnnouncementDto> dtos = new ArrayList<>();
+        List<Announcement> announcements = announcementRepository.findAll();
+        announcements.forEach(
+            announcement -> dtos.add(AnnouncementDtoFactory.factory().build(announcement))
+        );
+        dtos.sort(naturalOrder());
+        return dtos;
+    }
+
+    public AnnouncementDto get(Long id) {
+        Announcement announcement = announcementRepository.findAnnouncementById(id);
+        if (announcement == null) {
+            throw new EntityNotFoundException(Announcement.class, "Long id", id.toString());
+        }
+        return AnnouncementDtoFactory.factory().build(announcement);
+    }
+
+    public Long create(AnnouncementDto announcementDto) {
+
+        Announcement entity = AnnouncementDtoFactory.factory().create(announcementDto);
+        entity = announcementRepository.save(entity);
+
+        return (entity.getId());
+    }
+
+    public void update(AnnouncementDto announcementDto) {
+
+        Announcement entity = announcementRepository.findAnnouncementById(announcementDto.getId());
+
+        AnnouncementDtoFactory.factory().setEntity(entity).update(announcementDto);
+        announcementRepository.save(entity);
+    }
+
+    public void delete(Long id) {
+        Announcement entity = announcementRepository.findAnnouncementById(id);
+        announcementRepository.delete(entity);
+    }
+
+}
