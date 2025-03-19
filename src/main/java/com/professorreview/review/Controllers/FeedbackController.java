@@ -55,7 +55,6 @@ public class FeedbackController {
         return new ResponseEntity("The number of professors is: "+size, HttpStatus.OK);
     }
 
-
     @GetMapping("/returnHello")
     public ResponseEntity hello(){
         return new ResponseEntity("hello", HttpStatus.OK);
@@ -79,7 +78,7 @@ public class FeedbackController {
             teacher.setSubject(teacher.getSubject());
             return new ResponseEntity("Teacher information has been successfully saved", HttpStatus.OK);
     }
-//
+
     @PostMapping("/addProfessor")
     public ResponseEntity addProfessor(@RequestBody Professor professor){
         professorService.save(professor);
