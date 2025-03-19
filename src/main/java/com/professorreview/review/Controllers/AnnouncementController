@@ -1,0 +1,45 @@
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+
+@RestController
+@RequestMapping("/announcement")
+public class AnnouncementController {
+
+    private final AnnouncementService announcementService;
+
+    public AnnouncementAdminController(AnnouncementService announcementService) {
+        this.announcementService = announcementService;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<AnnouncementDto>> getAllAnnouncements() {
+        return ResponseEntity.ok(announcementService.getAllAnnouncements());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<AnnouncementDto> getAnAnnouncement(@PathVariable Long id) {
+        return ResponseEntity.ok(announcementService.get(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<Long> createAnnouncement(@RequestBody AnnouncementDto announcementDto) {
+        return ResponseEntity.ok(announcementService.create(announcementDto));
+    }
+
+    @PutMapping
+    public ResponseEntity<Void> updateAnnouncement(@RequestBody AnnouncementDto announcementDto) {
+        announcementService.update(announcementDto);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteAnnouncement(@PathVariable Long id) {
+        announcementService.delete(id);
+        return ResponseEntity.ok().build();
+    }
+
+
+}
