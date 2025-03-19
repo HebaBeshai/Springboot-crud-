@@ -1,10 +1,10 @@
 package com.professorreview.review.Controllers;
 
-import com.professorreview.review.DAO.ProfessorService;
+import com.professorreview.review.DAO.AnnouncementService;
 import com.professorreview.review.Entities.Professor;
 import com.professorreview.review.Entities.Student;
 import com.professorreview.review.Entities.Teacher;
-import com.professorreview.review.model.professorParam;
+import com.professorreview.review.model.announcementParam;
 import com.professorreview.review.model.studentParameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,23 +27,23 @@ public class FeedbackController {
     AnnouncementService announcementService;
 
     @GetMapping("/getAnnouncements")
-    public ResponseEntity<List<AnnouncementDto>> getAllAnnouncements() {
+    public ResponseEntity<List<announcementParam>> getAllAnnouncements() {
         return ResponseEntity.ok(announcementService.getAllAnnouncements());
     }
 
     @GetMapping("getAnAnnouncement/{id}")
-    public ResponseEntity<AnnouncementDto> getAnAnnouncement(@PathVariable Long id) {
+    public ResponseEntity<announcementParam> getAnAnnouncement(@PathVariable Long id) {
         return ResponseEntity.ok(announcementService.get(id));
     }
 
     @PostMapping("/addAnnouncement")
-    public ResponseEntity<Long> createAnnouncement(@RequestBody AnnouncementDto announcementDto) {
-        return ResponseEntity.ok(announcementService.create(announcementDto));
+    public ResponseEntity<Long> createAnnouncement(@RequestBody announcementParam announcementparam) {
+        return ResponseEntity.ok(announcementService.create(announcementparam));
     }
 
     @PutMapping("/editAnnouncement")
-    public ResponseEntity<Void> updateAnnouncement(@RequestBody AnnouncementDto announcementDto) {
-        announcementService.update(announcementDto);
+    public ResponseEntity<Void> updateAnnouncement(@RequestBody announcementParam announcementparam) {
+        announcementService.update(announcementparam);
         return ResponseEntity.ok().build();
     }
 
