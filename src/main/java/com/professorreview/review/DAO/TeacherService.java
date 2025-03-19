@@ -24,9 +24,6 @@ public class teacherService {
         return teacherRepository.findAll();
     }
 
-
-
-
 }
 
 
