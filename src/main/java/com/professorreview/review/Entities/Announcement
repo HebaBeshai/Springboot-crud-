@@ -16,6 +16,10 @@ public class Announcement extends Identifiable implements Serializable {
 
     public static final long serialVersionUID = 4343667L;
 
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    private Long id;
+
     @Column(name = "text", columnDefinition = "varchar(2000)")
     private String text;
 
