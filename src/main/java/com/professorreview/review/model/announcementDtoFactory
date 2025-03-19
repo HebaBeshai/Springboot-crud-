@@ -1,3 +1,4 @@
+package com.professorreview.review.model;
 
 public class AnnouncementDtoFactory {
 
@@ -15,22 +16,22 @@ public class AnnouncementDtoFactory {
         return this;
     }
 
-    public AnnouncementDto build(Announcement entity) {
-        AnnouncementDto dto = new AnnouncementDto();
+    public announcementParam build(Announcement entity) {
+        announcementParam announcementparam = new announcementParam();
 
         dto.setId(entity.getId());
         dto.setText(entity.getText());
 
-        return dto;
+        return announcementparam;
     }
 
-    public Announcement create(AnnouncementDto dto) {
+    public Announcement create(announcementParam announcementparam) {
         this.entity = new Announcement();
-        return update(dto);
+        return update(announcementparam);
     }
 
 
-    public Announcement update(AnnouncementDto dto) {
+    public Announcement update(announcementParam announcementparam) {
         if (entity == null) throw new IllegalArgumentException("An Announcement entity must be set on factory");
 
         entity.setText(dto.getText());
