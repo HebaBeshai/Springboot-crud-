@@ -1,43 +1,53 @@
 package com.professorreview.review.Controllers;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import com.professorreview.review.DAO.ProfessorService;
+import com.professorreview.review.Entities.Professor;
+import com.professorreview.review.Entities.Student;
+import com.professorreview.review.Entities.Teacher;
+import com.professorreview.review.model.professorParam;
+import com.professorreview.review.model.studentParameters;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 @RestController
+@EnableAutoConfiguration
 @RequestMapping("/announcement")
-public class AnnouncementController {
+public class FeedbackController {
 
-    private final AnnouncementService announcementService;
+    Logger logger = LoggerFactory.getLogger(FeedbackController.class);
 
-    public AnnouncementAdminController(AnnouncementService announcementService) {
-        this.announcementService = announcementService;
-    }
+    @Autowired
+    AnnouncementService announcementService;
 
-    @GetMapping
+    @GetMapping("/getAnnouncements")
     public ResponseEntity<List<AnnouncementDto>> getAllAnnouncements() {
         return ResponseEntity.ok(announcementService.getAllAnnouncements());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("getAnAnnouncement/{id}")
     public ResponseEntity<AnnouncementDto> getAnAnnouncement(@PathVariable Long id) {
         return ResponseEntity.ok(announcementService.get(id));
     }
 
-    @PostMapping
+    @PostMapping("/addAnnouncement")
     public ResponseEntity<Long> createAnnouncement(@RequestBody AnnouncementDto announcementDto) {
         return ResponseEntity.ok(announcementService.create(announcementDto));
     }
 
-    @PutMapping
+    @PutMapping("/editAnnouncement")
     public ResponseEntity<Void> updateAnnouncement(@RequestBody AnnouncementDto announcementDto) {
         announcementService.update(announcementDto);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("deleteAnAnnouncement/{id}")
     public ResponseEntity<Void> deleteAnnouncement(@PathVariable Long id) {
         announcementService.delete(id);
         return ResponseEntity.ok().build();
