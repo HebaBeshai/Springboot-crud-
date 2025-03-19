@@ -1,7 +1,14 @@
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+package com.professorreview.review.Entities;
+
+import org.hibernate.boot.registry.selector.spi.StrategySelectionException;
+import sun.util.resources.Bundles;
+
+import javax.annotation.Generated;
+import javax.persistence.*;
 import java.io.Serializable;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
 
 @Entity
 @Table(name = "announcement")
