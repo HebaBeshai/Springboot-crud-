@@ -1,4 +1,13 @@
-Springboot rest crud application.
-Uses JPA and H2 Database (in memory database used for development only).
-Maven.
-SQL/OQL.
+This is a professor review appplication where students can create, read, update, and delete professor reviews.
+
+It is built using the Spring Boot framework, follows a RESTful CRUD architecture, and is written in Java.
+Java (Spring Boot Framework)
+Spring Boot (REST API with CRUD functionality)
+Spring Data JPA (For database interaction)
+H2 Database (In-memory database for development)
+Maven (Dependency management and build tool)
+SQL (For querying the database)
+
+
+🛠 Future Enhancements
+Add a rating system alongside text reviews.
