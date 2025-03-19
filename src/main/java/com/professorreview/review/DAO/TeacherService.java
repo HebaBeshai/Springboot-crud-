@@ -17,11 +17,11 @@ public class teacherService {
     Logger logger = LoggerFactory.getLogger(teacherService.class);
 
     @Autowired
-    private teacherDAO TeacherDAO;
+    private TeacherRepository teacherRepository;
 
     public List<Teacher> list(){
         logger.info("professor DAO: findAll called");
-        return TeacherDAO.findAll();
+        return teacherRepository.findAll();
     }
 
 
