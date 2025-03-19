@@ -1,0 +1,31 @@
+package com.professorreview.review.model;
+
+public class announcementParam {
+    private Long id;
+    private String text;
+
+    public announcementParam() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    @Override
+    public int compareTo(announcementParam that) {
+        return new CompareToBuilder().append(this.text, that.text).toComparison();
+    }
+
+}
