@@ -17,20 +17,19 @@ public class ProfessorService {
     Logger logger = LoggerFactory.getLogger(ProfessorService.class);
 
     @Autowired
-    private ProfessorDAO professorDAO;
+    private ProfessorRespository professorRepository;
 
     public List<Professor> list(){
-        logger.info("professor DAO: findAll called.");
-        return professorDAO.findAll();
+        return professorRepository.findAll();
     }
     public void save(Professor saveNewProfessor){
-        professorDAO.save(saveNewProfessor);
+        professorRepository.save(saveNewProfessor);
     }
     public void edit(Professor editExistingProfessor){
-        professorDAO.update(editExistingProfessor);
+        professorRepository.update(editExistingProfessor);
     }
     public Professor findById(Long id){
-         return professorDAO.getById(id);
+         return professorRepository.getById(id);
 
     }
 }
