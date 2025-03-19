@@ -20,19 +20,16 @@ public class TeacherController {
     @Autowired
     teacherService TeacherService;
 
-//    @GetMapping("/get_teachers")
-//    public ResponseEntity getTeachers(){
-//        try{
-//            return new ResponseEntity(teacherService.list().toString(), HttpStatus.OK);
-//        }
-//        catch(){
-//
-//        }
-//    }
-
-    @GetMapping("/edit_teacher_info")
-    public void editTeacherInfo(@RequestBody teacherParameters teacherparameter) {
-    }
+    @GetMapping("/get_teachers")
+    public ResponseEntity getTeachers(){
+       try{
+           return new ResponseEntity(teacherService.list().toString(), HttpStatus.OK);
+       }
+          catch (Exception e){
+            logger.info(e.getMessage());
+            return new ResponseEntity("No professors available.", HttpStatus.OK);
+        }
+   }
 
 
 }
